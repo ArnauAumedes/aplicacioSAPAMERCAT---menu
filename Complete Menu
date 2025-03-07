@@ -1,0 +1,95 @@
+public class Vista {
+    public static void menu () {
+        System.out.println("1. Gestió Magatzem i Compres");
+        System.out.println("2. Introduir producte");
+        System.out.println("3. Passar per caixa");
+        System.out.println("4. Mostrar carro de la compra");
+        System.out.println("0. Sortir");
+    }
+
+    public static void menuGestioMagatzemCompres () {
+        System.out.println("1.1 Caducitat");
+        System.out.println("1.2 Tiquet de compra");
+        System.out.println("1.3 Composició textil");
+        System.out.println("1.0 Tornar");
+    }
+
+    public static void menuIntrduirProducte () {
+        System.out.println("2.1. Alimentació");
+        System.out.println("2.2. Textil");
+        System.out.println("2.3. Electrònica");
+        System.out.println("2.0. Tornar");
+    }
+}
+
+/* To combine the Vista class and the Controlador class to generate the menu, you need to call the methods from the Vista class within the Controlador class to display the menu options and handle user input. Here's a step-by-step explanation:  
+Display the Main Menu: Call Vista.menu() to display the main menu options.
+Handle User Input: Use a loop to read user input and call the appropriate methods based on the user's choice.
+Submenus: For each main menu option that has a submenu, call the corresponding submenu method from the Vista class and handle user input similarly. */
+
+import vista.Vista;
+
+int opcio;
+        int opcioCas1;
+        int opcioCas2;
+        System.out.println("Benvingut a SAPAMERCAT");
+        Vista.menu();
+        do {
+            opcio = Integer.parseInt(scan.nextLine());
+            if (opcio < 0 || opcio > 4) {
+                System.out.println("Opció incorrecta");
+                return;
+            }
+            switch (opcio) {
+                case 1:
+                    Vista.menuGestioMagatzemCompres();
+                    do {
+                        opcioCas1 = Integer.parseInt(scan.nextLine());
+                        if (opcioCas1 < 0 || opcioCas1 > 3) {
+                            System.out.println("Opció incorrecta");
+                            return;
+                        }
+                        switch (opcioCas1) {
+                            case 1:
+                                //Model.ordenarPerDataCaducitat(//Queue<Producte>);
+                                break;
+                            case 2:
+                                //Model.generarTiquetCompra(//Queue<Producte>);
+                                break;
+                            case 3:
+                                //Model.comprovarComposicioTextil(//Queue<Producte>);
+                                break;
+                        }
+                    } while (opcioCas1 != 0);
+                    break;
+                case 2:
+                    Vista.menuIntrduirProducte();
+                    do {
+                        opcioCas2 = Integer.parseInt(scan.nextLine());
+                        if (opcioCas2 < 0 || opcioCas2 > 3) {
+                            System.out.println("Opció incorrecta");
+                            return;
+                        }
+                        switch (opcioCas2) {
+                            case 1:
+                                introduirProducteAlimentacio();
+                                break;
+                            case 2:
+                                introduirProducteTextil();
+                                break;
+                            case 3:
+                                introduirProducteElectronica();
+                                break;
+                        }
+                    } while (opcioCas2 != 0);
+                    break;
+                case 3:
+                    //Model.pagar(//Queue<Producte>);
+                    break;
+                case 4:
+                    //Mostrar carro de la compra
+                    break;
+            }
+        } while (opcio != 0);
+        scan.close();
+    }
